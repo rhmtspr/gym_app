@@ -14,7 +14,10 @@ class HomeScreen extends StatelessWidget {
         actions: [IconButton(icon: Icon(Icons.doorbell), onPressed: () {})],
       ),
       body: SingleChildScrollView(
-        child: Column(children: [SlidingChallengeCard()]),
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Column(children: [SlidingChallengeCard()]),
+        ),
       ),
     );
   }
