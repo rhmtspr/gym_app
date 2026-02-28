@@ -54,9 +54,9 @@ class _SlidingChallengeCardState extends State<SlidingChallengeCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 180,
-      margin: const EdgeInsets.all(16),
+      // margin: const EdgeInsets.all(16),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Stack(
@@ -116,8 +116,8 @@ class _SlidingChallengeCardState extends State<SlidingChallengeCard> {
         image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
       ),
       child: Container(
-        color: Colors.black.withOpacity(
-          0.2,
+        color: Colors.black.withValues(
+          alpha: 0.2,
         ), // Darken image for text readability
         padding: const EdgeInsets.all(24.0),
         child: const Column(
