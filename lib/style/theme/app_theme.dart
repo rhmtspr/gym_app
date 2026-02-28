@@ -50,15 +50,15 @@ class AppTheme {
   // ================= PRIVATE PARTS =================
 
   static TextTheme get _textTheme {
-    return const TextTheme(
+    return TextTheme(
       displayLarge: AppTextStyles.displayLarge,
       titleLarge: AppTextStyles.titleLarge,
-      bodyMedium: AppTextStyles.bodyMedium,
+      bodyMedium: AppTextStyles.bodyLargeMedium,
     );
   }
 
   static AppBarTheme get _appBarTheme {
-    return const AppBarTheme(
+    return AppBarTheme(
       elevation: 0,
       centerTitle: true,
       backgroundColor: AppColors.primary,
