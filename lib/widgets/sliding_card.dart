@@ -9,12 +9,13 @@ class SlidingChallengeCard extends StatefulWidget {
 }
 
 class _SlidingChallengeCardState extends State<SlidingChallengeCard> {
-  final PageController _pageController = PageController();
-  int _currentPage = 0;
+  final PageController _pageController = PageController(initialPage: 1000);
   late Timer _timer;
 
   // Your list of background images or content
   final List<String> _images = [
+    'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
+    'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
     'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
   ];
 
@@ -22,16 +23,9 @@ class _SlidingChallengeCardState extends State<SlidingChallengeCard> {
   void initState() {
     super.initState();
     // Setup the timer to slide every 2 seconds
-    _timer = Timer.periodic(Duration(seconds: 2), (Timer timer) {
-      if (_currentPage < _images.length - 1) {
-        _currentPage++;
-      } else {
-        _currentPage = 0; // Loop back to start
-      }
-
-      _pageController.animateToPage(
-        _currentPage,
-        duration: Duration(milliseconds: 500),
+    _timer = Timer.periodic(Duration(seconds: 4), (Timer timer) {
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
       );
     });
@@ -48,18 +42,20 @@ class _SlidingChallengeCardState extends State<SlidingChallengeCard> {
   Widget build(BuildContext context) {
     return Container(
       height: 180,
-      margin: EdgeInsets.all(16),
+      // margin: EdgeInsets.all(16),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: PageView.builder(
           controller: _pageController,
-          itemCount: _images.length,
+          itemCount: 10000,
           itemBuilder: (context, index) {
+            final imageIndex = index % _images.length;
+
             return Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(
-                  image: NetworkImage(_images[index]),
+                  image: NetworkImage(_images[imageIndex]),
                   fit: BoxFit.cover,
                 ),
               ),
